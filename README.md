@@ -10,3 +10,10 @@ This is a Python ETL project that extracts data from a CSV file, transforms it, 
 ```bash
 poetry install
 ```
+
+2. Create the data folder and add the CSV file to it.
+```bash
+mkdir data
+mkdir data/parquet
+mkdir data/raw
+```
