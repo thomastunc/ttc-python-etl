@@ -33,7 +33,7 @@ if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
 # Voeg je model's MetaData object hier toe voor 'autogenerate' support
-target_metadata = model.Base
+target_metadata = model.Base.metadata
 
 
 def run_migrations_offline() -> None:
