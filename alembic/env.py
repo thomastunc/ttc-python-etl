@@ -1,4 +1,3 @@
-from alembic.ddl.impl import DefaultImpl
 import os
 from logging.config import fileConfig
 
@@ -6,6 +5,7 @@ from sqlalchemy import create_engine
 from sqlalchemy import pool
 from alembic import context
 from dotenv import load_dotenv
+from alembic.ddl.impl import DefaultImpl
 
 from src.db import model  # Importeer je modellen
 
@@ -34,12 +34,6 @@ if config.config_file_name is not None:
 
 # Voeg je model's MetaData object hier toe voor 'autogenerate' support
 target_metadata = model.Base
-
-
-# Aangepaste Alembic implementatieklasse voor DuckDB
-class AlembicDuckDBImpl(DefaultImpl):
-    """Alembic implementation for DuckDB."""
-    __dialect__ = "duckdb"
 
 
 def run_migrations_offline() -> None:
