@@ -8,7 +8,7 @@ Base = declarative_base()
 class FactStudentNumbers(Base):
     __tablename__ = 'fact_student_numbers'
 
-    id_seq = Sequence('user_id_seq')
+    id_seq = Sequence('fact_id_seq')
     id = Column('id', Integer, id_seq, server_default=id_seq.next_value(), primary_key=True)
     provincie_id = Column(Integer, ForeignKey('dim_provincie.id'))
     gemeente_id = Column(Integer, ForeignKey('dim_gemeente.id'))
@@ -31,7 +31,7 @@ class FactStudentNumbers(Base):
 class DimProvincie(Base):
     __tablename__ = 'dim_provincie'
 
-    id_seq = Sequence('user_id_seq')
+    id_seq = Sequence('provincie_id_seq')
     id = Column('id', Integer, id_seq, server_default=id_seq.next_value(), primary_key=True)
     naam = Column(String(50))
 
@@ -41,7 +41,7 @@ class DimProvincie(Base):
 class DimGemeente(Base):
     __tablename__ = 'dim_gemeente'
 
-    id_seq = Sequence('user_id_seq')
+    id_seq = Sequence('gemeente_id_seq')
     id = Column('id', Integer, id_seq, server_default=id_seq.next_value(), primary_key=True)
     gemeentecode = Column(String(10))
     gemeentenaam = Column(String(100))
@@ -52,7 +52,7 @@ class DimGemeente(Base):
 class DimInstelling(Base):
     __tablename__ = 'dim_instelling'
 
-    id_seq = Sequence('user_id_seq')
+    id_seq = Sequence('instelling_id_seq')
     id = Column('id', Integer, id_seq, server_default=id_seq.next_value(), primary_key=True)
     soort_instelling = Column(String(100))
     instellingcode_actueel = Column(String(10))
@@ -66,7 +66,7 @@ class DimInstelling(Base):
 class DimOpleiding(Base):
     __tablename__ = 'dim_opleiding'
 
-    id_seq = Sequence('user_id_seq')
+    id_seq = Sequence('opleiding_id_seq')
     id = Column('id', Integer, id_seq, server_default=id_seq.next_value(), primary_key=True)
     opleidingcode_actueel = Column(String(10))
     opleidingsnaam_actueel = Column(String(100))
