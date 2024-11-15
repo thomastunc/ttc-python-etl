@@ -15,12 +15,8 @@ class FactStudentNumbers(Base):
     instelling_id = Column(Integer, ForeignKey('dim_instelling.id'))
     opleiding_id = Column(Integer, ForeignKey('dim_opleiding.id'))
     geslacht_id = Column(String(10))
-
-    aantal_2018 = Column(Integer)
-    aantal_2019 = Column(Integer)
-    aantal_2020 = Column(Integer)
-    aantal_2021 = Column(Integer)
-    aantal_2022 = Column(Integer)
+    aantal = Column(Integer)
+    jaar = Column(Integer)
 
     provincie = relationship("DimProvincie", back_populates="fact_student_numbers")
     gemeente = relationship("DimGemeente", back_populates="fact_student_numbers")

@@ -62,19 +62,17 @@ def run_etl(path):
                 session.commit()
 
             # Converteer de waarden voor aantal_2018 tot aantal_2022 naar integers
-            fact = FactStudentNumbers(
-                provincie_id=provincie.id,
-                gemeente_id=gemeente.id,
-                instelling_id=instelling.id,
-                opleiding_id=opleiding.id,
-                geslacht_id=row['GESLACHT'],
-                aantal_2018=convert_to_int(row['2018']),
-                aantal_2019=convert_to_int(row['2019']),
-                aantal_2020=convert_to_int(row['2020']),
-                aantal_2021=convert_to_int(row['2021']),
-                aantal_2022=convert_to_int(row['2022'])
-            )
-            session.add(fact)
+            for year in range(2018, 2023):
+                fact = FactStudentNumbers(
+                    provincie_id=provincie.id,
+                    gemeente_id=gemeente.id,
+                    instelling_id=instelling.id,
+                    opleiding_id=opleiding.id,
+                    geslacht_id=row['GESLACHT'],
+                    aantal=convert_to_int(row[str(year)]),
+                    jaar=year
+                )
+                session.add(fact)
 
             if int(index) % 1000 == 0:
                 session.commit()
